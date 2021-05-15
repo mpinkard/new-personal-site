@@ -24,7 +24,13 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <div
+      style={{
+        minHeight: "100vh",
+        position: "relative",
+        paddingBottom: "2rem",
+      }}
+    >
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
@@ -34,17 +40,28 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer
+      </div>
+      <footer
+        style={{
+          position: "absolute",
+          bottom: 0,
+          width: "100%",
+          height: "2rem",
+        }}
+      >
+        <div
           style={{
-            marginTop: `2rem`,
+            margin: `0 auto`,
+            maxWidth: 960,
           }}
         >
-          © {new Date().getFullYear()}, Built with
+          © Michael Pinkard {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+        </div>
+      </footer>
+      <div style={{ display: "block", height: "2rem" }} />
+    </div>
   )
 }
 
