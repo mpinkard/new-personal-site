@@ -67,7 +67,7 @@ const ContactPage = () => {
 
       window.grecaptcha.ready(_ => {
         window.grecaptcha
-          .execute("6Lf2m9kaAAAAABc1AV7SqXAxZcz7t3wO0zhxDxCT", {
+          .execute(`${process.env.GOOGLE_RECAPTCHA_KEY}`, {
             action: "contact",
           })
           .then(token => {
