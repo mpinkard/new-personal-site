@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Link } from "gatsby"
 
-import { Button, TextField, Box } from "@material-ui/core"
+import { Button, TextField, Box, useMediaQuery } from "@material-ui/core"
 import Loader from "react-loader-spinner"
 
 const simpleTextStyle = {
@@ -118,7 +118,7 @@ const ContactPage = () => {
     setMessageErrorText("")
   }
 
-  const Loader = () => (
+  const Spinner = () => (
     <Box
       style={{
         display: "flex",
@@ -148,29 +148,43 @@ const ContactPage = () => {
     </Box>
   )
 
+  const mobile = useMediaQuery("(max-width: 600px)")
+
   return (
     <Layout>
       <Seo title="Contact" />
-      <h1>Contact Me</h1>
+      <h1 style={{ whiteSpace: "nowrap" }}>Contact Me</h1>
       {loading ? (
-        <Loader />
+        <Spinner />
       ) : successfulSend ? (
         <Success />
       ) : (
         <Box>
           <Box
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
+            style={
+              mobile
+                ? { display: "flex", flexDirection: "column" }
+                : {
+                    display: "flex",
+                    flexDirection: "row",
+                  }
+            }
           >
             <Box
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                marginRight: 50,
-                flex: "1 1 0px",
-              }}
+              style={
+                mobile
+                  ? {
+                      display: "flex",
+                      flexDirection: "column",
+                      flex: "1 1 0px",
+                    }
+                  : {
+                      display: "flex",
+                      flexDirection: "column",
+                      marginRight: 50,
+                      flex: "1 1 0px",
+                    }
+              }
             >
               <TextField
                 id="name"

@@ -28,7 +28,7 @@ const markdownContainerStyle = {
 const IndexPage = () => (
   <Layout>
     <Seo title="Home" />
-    <div style={aboutDiv}>
+    <div class ="about" style={aboutDiv}>
       <Box style={imageContainerStyle}>
         <Box>
           <StaticImage
@@ -39,7 +39,11 @@ const IndexPage = () => (
             placeholder="blurred"
             formats={["AUTO", "WEBP", "AVIF"]}
             alt="Michael in Strathcone Provincial Park, British Columbia"
-            style={{ marginBottom: `1.45rem` }}
+            style={{
+              marginBottom: `1.45rem`,
+              borderStyle: `solid`,
+              borderWidth: `5px`,
+            }}
           />
         </Box>
       </Box>

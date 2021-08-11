@@ -60,6 +60,7 @@ const Layout = ({ children }) => {
           bottom: 0,
           width: "100%",
           height: "2rem",
+          padding: `0 1.0875rem`,
         }}
       >
         <div
