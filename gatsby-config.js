@@ -1,8 +1,39 @@
 module.exports = {
   siteMetadata: {
     title: `Michael Pinkard`,
-    description: `All about me, Michael!`,
+    description: `All about Michael Pinkard, geographer and software developer!`,
     author: `@michaelpinkard`,
+    siteUrl: "https://michaelpinkard.com",
+    keywords: [
+      "Michael",
+      "Pinkard",
+      "software",
+      "geography",
+      "knowledge",
+      "tennis",
+      "Lafayette",
+      "UBC",
+      "Lafayette College",
+      "University of British Columbia",
+      "Front-end development",
+      "Full-stack development",
+      "data pipelines",
+      "high-performance computing",
+      "python",
+      "javascript",
+      "react",
+      "java",
+      "postgresql",
+      "mysql",
+      "sql",
+      "agriculture",
+      "food politics",
+      "food",
+      "politics",
+      "science",
+      "STS",
+      "science and technology studies",
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -28,9 +59,15 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
-      
     },
     `gatsby-plugin-gatsby-cloud`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+    "gatsby-plugin-sitemap",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

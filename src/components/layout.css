@@ -601,6 +601,3 @@ pre tt:after {
     font-size: 100%;
   }
 }
-.about > div:last-child {
-  margin: 0 5px !important;
-}

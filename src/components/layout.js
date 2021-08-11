@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
       style={{
         minHeight: "100vh",
         position: "relative",
-        paddingBottom: "2rem",
+        //paddingBottom: "2rem",
       }}
     >
       <div
@@ -60,13 +60,13 @@ const Layout = ({ children }) => {
           bottom: 0,
           width: "100%",
           height: "2rem",
-          padding: `0 1.0875rem`,
         }}
       >
         <div
           style={{
             margin: `0 auto`,
             maxWidth: 960,
+            padding: `0 1.0875rem`,
           }}
         >
           © Michael Pinkard {new Date().getFullYear()}, Built with

@@ -14,6 +14,7 @@ const CV = () => (
         flexDirection: "row",
         justifyContent: "center",
         width: "100%",
+        paddingBottom: "1rem",
       }}
     >
       <div
@@ -22,8 +23,8 @@ const CV = () => (
           if (element) {
             PDFObject.embed(pdfImg, element, {
               view: "FitH",
-              height: "800px",
-              width: "600px",
+              height: "829px",
+              width: "610px",
             })
           }
         }}
