@@ -18,94 +18,146 @@ const ContactPage = () => {
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
   const [successfulSend, setSuccessfulSend] = useState(false)
-  const handleChange = setFunc => {
-    return event => setFunc(event.target.value)
+
+  const [nameErrorText, setNameErrorText] = useState("")
+  const [emailErrorText, setEmailErrorText] = useState("")
+  const [subjectErrorText, setSubjectErrorText] = useState("")
+  const [messageErrorText, setMessageErrorText] = useState("")
+
+  const handleChange = (setFunc, errorFunc) => {
+    return event => {
+      errorFunc("")
+      return setFunc(event.target.value)
+    }
+  }
+
+  const emailValid = () => {
+    if (email) {
+      const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+      return re.test(email.toLowerCase())
+    }
+    return false
+  }
+
+  const validateData = () => {
+    let valid = true
+    if (!name) {
+      setNameErrorText("Please include your name")
+      valid = false
+    }
+    if (!subject) {
+      setSubjectErrorText("Please include a subject")
+      valid = false
+    }
+    if (!message) {
+      setMessageErrorText("Please write me a message :)")
+      valid = false
+    }
+    if (!emailValid()) {
+      setEmailErrorText("Please include a valid email address")
+      valid = false
+    }
+    return valid
   }
 
   const onSubmit = async e => {
-    setLoading(true)
     e.preventDefault()
+    if (validateData()) {
+      setLoading(true)
 
-    window.grecaptcha.ready(_ => {
-      window.grecaptcha
-        .execute("6Lf2m9kaAAAAABc1AV7SqXAxZcz7t3wO0zhxDxCT", {
-          action: "contact",
-        })
-        .then(token => {
-          const data = JSON.stringify({
-            name,
-            email,
-            subject,
-            message,
-            "g-recaptcha-response": token,
+      window.grecaptcha.ready(_ => {
+        window.grecaptcha
+          .execute("6Lf2m9kaAAAAABc1AV7SqXAxZcz7t3wO0zhxDxCT", {
+            action: "contact",
           })
-          return fetch(
-            "https://getform.io/f/0238e897-27ec-4736-a46d-49d5af01a7a0",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: data,
+          .then(token => {
+            const data = JSON.stringify({
+              name,
+              email,
+              subject,
+              message,
+              "g-recaptcha-response": token,
+            })
+            return fetch(
+              "https://getform.io/f/0238e897-27ec-4736-a46d-49d5af01a7a0",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: data,
+              }
+            )
+          })
+          .then(res => {
+            console.log(res)
+            if (res.status === 200) {
+              setSuccessfulSend(true)
+              onClear()
             }
-          )
-        })
-        .then(res => {
-          console.log(res)
-          if (res.status === 200) {
-            setSuccessfulSend(true)
-            onClear()
-          }
-          setLoading(false)
-          setMessage(res.statusText)
-        })
-        .catch(e => {
-          setLoading(false)
-          console.log(e)
-          setNotification(e)
-        })
-    })
+            setLoading(false)
+            setMessage(res.statusText)
+          })
+          .catch(e => {
+            setLoading(false)
+            console.log(e)
+            setNotification(e)
+          })
+      })
+    }
   }
 
   const onClear = () => {
     setName("")
+    setNameErrorText("")
     setEmail("")
+    setEmailErrorText("")
     setSubject("")
+    setSubjectErrorText("")
     setMessage("")
+    setMessageErrorText("")
   }
+
+  const Loader = () => (
+    <Box
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+      }}
+    >
+      <Loader type="Puff" color="#fca344" height={300} width={100} />
+    </Box>
+  )
+
+  const Success = () => (
+    <Box>
+      <p>Your message has been successfully sent.</p>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Button
+          variant="contained"
+          style={{
+            backgroundColor: "rebeccapurple",
+            color: "white",
+            width: "200px",
+          }}
+        >
+          Read More About Michael
+        </Button>
+      </Link>
+    </Box>
+  )
 
   return (
     <Layout>
       <Seo title="Contact" />
       <h1>Contact Me</h1>
       {loading ? (
-        <Box
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
-        >
-          <Loader type="Puff" color="#fca344" height={300} width={100} />
-        </Box>
+        <Loader />
       ) : successfulSend ? (
-        <div>
-          <p>Your message has been successfully sent.</p>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "rebeccapurple",
-                color: "white",
-                width: "200px",
-              }}
-            >
-              Read More About Michael
-            </Button>
-          </Link>
-        </div>
+        <Success />
       ) : (
-        <div>
+        <Box>
           <Box
             style={{
               display: "flex",
@@ -124,15 +176,19 @@ const ContactPage = () => {
                 id="name"
                 label="Name"
                 value={name}
-                onChange={handleChange(setName)}
+                error={!!nameErrorText}
+                onChange={handleChange(setName, setNameErrorText)}
                 variant="outlined"
                 style={simpleTextStyle}
+                helperText={nameErrorText}
               />
               <TextField
                 id="email"
                 label="E-mail"
                 value={email}
-                onChange={handleChange(setEmail)}
+                error={!!emailErrorText}
+                helperText={emailErrorText}
+                onChange={handleChange(setEmail, setEmailErrorText)}
                 variant="outlined"
                 style={simpleTextStyle}
               />
@@ -141,9 +197,11 @@ const ContactPage = () => {
                 id="subject"
                 label="Subject"
                 value={subject}
-                onChange={handleChange(setSubject)}
+                error={!!subjectErrorText}
+                onChange={handleChange(setSubject, setSubjectErrorText)}
                 variant="outlined"
                 style={simpleTextStyle}
+                helperText={subjectErrorText}
               />
             </Box>
             <TextField
@@ -152,7 +210,9 @@ const ContactPage = () => {
               multiline
               rows={9}
               value={message}
-              onChange={handleChange(setMessage)}
+              error={!!messageErrorText}
+              helperText={messageErrorText}
+              onChange={handleChange(setMessage, setMessageErrorText)}
               variant="outlined"
               style={{ flex: "1 1 0px" }}
             />
@@ -183,7 +243,7 @@ const ContactPage = () => {
               Clear
             </Button>
           </Box>
-        </div>
+        </Box>
       )}
       {notification && <span>{notification}</span>}
     </Layout>
