@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import PDFObject from "pdfobject"
-import pdfImg from "../images/Pinkard_Michael_CV_academic.pdf"
+import pdfImg from "../images/Tech_CV.pdf"
 import { Box } from "@material-ui/core"
 
 const CV = () => (

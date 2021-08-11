@@ -32,12 +32,13 @@ const IndexPage = () => (
       <Box style={imageContainerStyle}>
         <Box>
           <StaticImage
-            src="../images/me_outdoors.jpg"
+            src="../images/me_outdoors.png"
             width={400}
             height={400}
-            quality={95}
+            quality={100}
+            placeholder="blurred"
             formats={["AUTO", "WEBP", "AVIF"]}
-            alt="A Gatsby astronaut"
+            alt="Michael in Strathcone Provincial Park, British Columbia"
             style={{ marginBottom: `1.45rem` }}
           />
         </Box>
