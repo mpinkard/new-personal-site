@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import * as React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -23,6 +23,14 @@ const Layout = ({ children }) => {
     }
   `)
 
+  useEffect(() => {
+    // Add reCaptcha to the header
+    const script = document.createElement("script")
+    script.src =
+      "https://www.google.com/recaptcha/api.js?render=6Lf2m9kaAAAAABc1AV7SqXAxZcz7t3wO0zhxDxCT"
+    document.body.appendChild(script)
+  }, [])
+
   return (
     <div
       style={{
@@ -31,12 +39,17 @@ const Layout = ({ children }) => {
         paddingBottom: "2rem",
       }}
     >
+      <div
+        className="g-recaptcha"
+        data-sitekey="6Lf2m9kaAAAAABc1AV7SqXAxZcz7t3wO0zhxDxCT"
+        data-size="invisible"
+      ></div>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
           margin: `0 auto`,
           maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          padding: `0 1.0875rem`,
         }}
       >
         <main>{children}</main>

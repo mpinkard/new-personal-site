@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import { Box } from "@material-ui/core"
 
@@ -13,7 +13,6 @@ const aboutDiv = {
   flexWrap: "wrap",
   width: "100%",
 }
-
 const imageContainerStyle = {
   display: "flex",
   flexDirection: "row",
@@ -21,7 +20,10 @@ const imageContainerStyle = {
   flex: "1 0 300px",
 }
 
-const markdownContainerStyle = { flex: "2 1 250px", marginLeft: "25px" }
+const markdownContainerStyle = {
+  flex: "2 1 250px",
+  marginLeft: "25px",
+}
 
 const IndexPage = () => (
   <Layout>
@@ -30,8 +32,9 @@ const IndexPage = () => (
       <Box style={imageContainerStyle}>
         <Box>
           <StaticImage
-            src="../images/me2.png"
-            width={300}
+            src="../images/me_outdoors.jpg"
+            width={400}
+            height={400}
             quality={95}
             formats={["AUTO", "WEBP", "AVIF"]}
             alt="A Gatsby astronaut"
