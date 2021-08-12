@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
   useEffect(() => {
     // Add reCaptcha to the header
     const script = document.createElement("script")
-    script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.GOOGLE_RECAPTCHA_KEY}`
+    script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_GOOGLE_RECAPTCHA_KEY}`
     document.body.appendChild(script)
   }, [])
 
@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
     >
       <div
         className="g-recaptcha"
-        data-sitekey={`${process.env.GOOGLE_RECAPTCHA_KEY}`}
+        data-sitekey={`${process.env.GATSBY_GOOGLE_RECAPTCHA_KEY}`}
         data-size="invisible"
       ></div>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />

@@ -78,6 +78,8 @@ const IndexPage = () => {
               <StaticImage
                 src="../images/me_outdoors.png"
                 quality={100}
+                height={544}
+                width={408}
                 placeholder="blurred"
                 formats={["AUTO", "WEBP", "AVIF"]}
                 alt="Michael in Strathcona Provincial Park, British Columbia"
