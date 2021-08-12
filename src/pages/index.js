@@ -12,26 +12,28 @@ const IndexPage = () => (
     <div className="about-container">
       <Box className="me-image-container">
         <Box>
-          <StaticImage
-            className="mobile-image"
-            src="../images/me_outdoors.png"
-            height={400}
-            width={400}
-            quality={100}
-            placeholder="blurred"
-            formats={["AUTO", "WEBP", "AVIF"]}
-            alt="Michael in Strathcona Provincial Park, British Columbia"
-          />
-          <StaticImage
-            className="desktop-image"
-            src="../images/me_outdoors.png"
-            quality={100}
-            height={544}
-            width={408}
-            placeholder="blurred"
-            formats={["AUTO", "WEBP", "AVIF"]}
-            alt="Michael in Strathcona Provincial Park, British Columbia"
-          />
+          <div className="mobile-image">
+            <StaticImage
+              src="../images/me_outdoors.png"
+              height={400}
+              width={400}
+              quality={100}
+              placeholder="blurred"
+              formats={["AUTO", "WEBP", "AVIF"]}
+              alt="Michael in Strathcona Provincial Park, British Columbia"
+            />
+          </div>
+          <div className="desktop-image">
+            <StaticImage
+              src="../images/me_outdoors.png"
+              quality={100}
+              height={544}
+              width={408}
+              placeholder="blurred"
+              formats={["AUTO", "WEBP", "AVIF"]}
+              alt="Michael in Strathcona Provincial Park, British Columbia"
+            />
+          </div>
         </Box>
       </Box>
       <Box className="about-markdown">
