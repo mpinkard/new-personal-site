@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Link } from "gatsby"
 
-import { Button, TextField, Box, useMediaQuery } from "@material-ui/core"
+import { Button, TextField, Box } from "@material-ui/core"
 import Loader from "react-loader-spinner"
 
 const simpleTextStyle = {
@@ -147,8 +147,6 @@ const ContactPage = () => {
     </Box>
   )
 
-  const mobile = useMediaQuery("(max-width: 600px)")
-
   return (
     <Layout>
       <Seo title="Contact" />
@@ -159,31 +157,9 @@ const ContactPage = () => {
         <Success />
       ) : (
         <Box>
-          <Box
-            style={
-              mobile
-                ? { display: "flex", flexDirection: "column" }
-                : {
-                    display: "flex",
-                    flexDirection: "row",
-                  }
-            }
-          >
+          <Box className="contact-form-container">
             <Box
-              style={
-                mobile
-                  ? {
-                      display: "flex",
-                      flexDirection: "column",
-                      flex: "1 1 0px",
-                    }
-                  : {
-                      display: "flex",
-                      flexDirection: "column",
-                      marginRight: 50,
-                      flex: "1 1 0px",
-                    }
-              }
+              className="text-field-container"
             >
               <TextField
                 id="name"
