@@ -66,9 +66,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-gatsby-cloud`,
       options: {
-        headers: {
-          "/*": ["X-Frame-Options: SAMEORIGIN"],
-        },
+        allPageHeaders: ["X-Frame-Options: SAMEORIGIN", "SameSite: Lax"],
       },
     },
     {

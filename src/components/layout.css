@@ -402,9 +402,12 @@ p {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p:last-child {
-  margin-bottom: 0;
+@media only screen and (min-width: 780px) {
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
+
 pre {
   margin-left: 0;
   margin-right: 0;

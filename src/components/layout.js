@@ -27,7 +27,6 @@ const Layout = ({ children }) => {
     // Add reCaptcha to the header
     const script = document.createElement("script")
     script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_GOOGLE_RECAPTCHA_KEY}`
-    document.body.appendChild(script)
   }, [])
 
   return (
@@ -35,7 +34,6 @@ const Layout = ({ children }) => {
       style={{
         minHeight: "100vh",
         position: "relative",
-        //paddingBottom: "2rem",
       }}
     >
       <div
