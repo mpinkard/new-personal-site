@@ -3,11 +3,28 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Box } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
+import CV_PDF from "../images/Tech_CV.pdf"
 
 const CV = () => {
   return (
     <Layout>
       <Seo title="CV" />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          width: "100%",
+          paddingBottom: "0.5em",
+        }}
+      >
+        <div style={{ width: "610px" }}>
+          <a href={CV_PDF} download>
+            Download Michael's CV directly
+          </a>
+        </div>
+      </div>
       <Box
         style={{
           display: "flex",
