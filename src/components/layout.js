@@ -27,6 +27,7 @@ const Layout = ({ children }) => {
     // Add reCaptcha to the header
     const script = document.createElement("script")
     script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_GOOGLE_RECAPTCHA_KEY}`
+    document.getElementById("g-recaptcha").append(script)
   }, [])
 
   return (
@@ -37,6 +38,7 @@ const Layout = ({ children }) => {
       }}
     >
       <div
+        id="g-recaptcha"
         className="g-recaptcha"
         data-sitekey={`${process.env.GATSBY_GOOGLE_RECAPTCHA_KEY}`}
         data-size="invisible"
