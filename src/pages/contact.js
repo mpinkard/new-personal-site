@@ -90,7 +90,6 @@ const ContactPage = () => {
             )
           })
           .then(res => {
-            console.log(res)
             if (res.status === 200) {
               setSuccessfulSend(true)
               onClear()
