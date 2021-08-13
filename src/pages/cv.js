@@ -3,13 +3,12 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Box } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
 import CV_PDF from "../images/Tech_CV.pdf"
 
 const CV = () => {
   return (
     <Layout>
-      <Seo title="CV" />
+      <Seo title="CV" description="Michael Pinkard's CV" lang="en" />
       <div
         style={{
           display: "flex",

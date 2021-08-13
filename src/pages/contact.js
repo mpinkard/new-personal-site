@@ -149,7 +149,7 @@ const ContactPage = () => {
 
   return (
     <Layout>
-      <Seo title="Contact" />
+      <Seo title="Contact" description="Send Michael a message" lang="en" />
       <h1 style={{ whiteSpace: "nowrap" }}>Contact Me</h1>
       {loading ? (
         <Spinner />
@@ -158,9 +158,7 @@ const ContactPage = () => {
       ) : (
         <Box>
           <Box className="contact-form-container">
-            <Box
-              className="text-field-container"
-            >
+            <Box className="text-field-container">
               <TextField
                 id="name"
                 label="Name"
