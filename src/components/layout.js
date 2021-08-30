@@ -11,9 +11,6 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
-
-const googleSrc = `https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_GOOGLE_RECAPTCHA_KEY}`
-
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -24,19 +21,6 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
-  const isScriptAdded = () => {
-    return Boolean(document.querySelector('script[src="' + googleSrc + '"]'))
-  }
-
-  useEffect(() => {
-    // Add reCaptcha to the header
-    if (!isScriptAdded()) {
-      const script = document.createElement("script")
-      script.src = googleSrc
-      document.body.append(script)
-    }
-  }, [])
 
   return (
     <div
