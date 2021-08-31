@@ -41,6 +41,20 @@ module.exports = {
   plugins: [
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [`G-8SLHPRY0V2`],
+      },
+      gtagConfig: {
+        anonymize_ip: true,
+        cookie_expires: 0,
+      },
+      pluginConfig: {
+        head: true,
+        respectDNT: true,
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,

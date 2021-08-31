@@ -3,6 +3,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Box } from "@material-ui/core"
 import { StaticImage } from "gatsby-plugin-image"
+import { OutboundLink } from "gatsby-plugin-google-gtag"
 import CV_PDF from "../images/Tech_CV.pdf"
 
 const CV = () => {
@@ -19,9 +20,9 @@ const CV = () => {
         }}
       >
         <div style={{ width: "610px" }}>
-          <a href={CV_PDF} download>
+          <OutboundLink href={CV_PDF} download>
             Download Michael's CV directly
-          </a>
+          </OutboundLink>
         </div>
       </div>
       <Box
