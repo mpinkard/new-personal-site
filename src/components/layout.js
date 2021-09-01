@@ -12,8 +12,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 
-const googleSrc = `https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_GOOGLE_RECAPTCHA_KEY}`
-
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -64,7 +62,9 @@ const Layout = ({ children }) => {
         >
           © Michael Pinkard {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+          <a rel="noreferrer" target="_blank" href="https://www.gatsbyjs.com">
+            Gatsby
+          </a>
         </div>
       </footer>
       <div style={{ display: "block", height: "2rem" }} />
