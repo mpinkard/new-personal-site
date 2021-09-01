@@ -33,6 +33,7 @@ export const wrapRootElement = ({ element }) => {
 export const onRenderBody = ({ setHeadComponents }, pluginOptions) => {
   const HeadComponents = [
     <script
+      async
       key={`google-recaptcha-script`}
       src={`https://www.google.com/recaptcha/api.js?render=${process.env.GATSBY_GOOGLE_RECAPTCHA_KEY}`}
     ></script>,
