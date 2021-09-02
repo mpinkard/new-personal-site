@@ -62,7 +62,11 @@ const Layout = ({ children }) => {
         >
           © Michael Pinkard {new Date().getFullYear()}, Built with
           {` `}
-          <a rel="noreferrer" target="_blank" href="https://www.gatsbyjs.com">
+          <a
+            rel="noreferrer noopener"
+            target="_blank"
+            href="https://www.gatsbyjs.com"
+          >
             Gatsby
           </a>
         </div>
