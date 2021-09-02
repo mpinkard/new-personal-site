@@ -8,7 +8,7 @@ import About from "../components/about.mdx"
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="About" description="Short bio of Michael" lang="en" />
+    <Seo title="Home" description="Short bio of Michael" lang="en" />
     <div className="about-container">
       <Box className="me-image-container">
         <Box>

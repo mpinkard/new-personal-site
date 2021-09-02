@@ -14,7 +14,7 @@ const ListLink = props => (
 
 const Menu = () => (
   <ul style={{ listStyle: `none`, float: `right` }}>
-    <ListLink to="/">About</ListLink>
+    <ListLink to="/">Home</ListLink>
     <ListLink to="/contact/">Contact</ListLink>
     <ListLink to="/cv/" last>
       CV
